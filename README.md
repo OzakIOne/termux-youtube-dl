@@ -7,7 +7,7 @@ Bash script to setup youtube-dl in termux
 1. Download [termux](https://play.google.com/store/apps/details?id=com.termux&hl=fr&gl=US)
 2. Open termux & copy paste this :
 
-   `curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v1.0.0/install.sh | bash`
+   `curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v1.0.1/install.sh | bash`
 
 ## How to use
 
