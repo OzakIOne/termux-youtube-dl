@@ -15,7 +15,7 @@ if [[ "$1" =~ ^.*youtu.*$ ]] || [[ "$1" =~ ^.*youtube.*$ ]]; then
   youtube-dl -f "$video"+"$audio" "$1"
 elif [[ "$1" =~ ^.*nourlselected.*$ ]]; then
   echo "There was an error"
-else youtube-dl -f best "$1"
+else youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' "$1"
 fi
 
 read -p "Press enter to continue"
