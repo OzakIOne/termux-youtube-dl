@@ -20,13 +20,13 @@ termux-setup-storage
 sleep 2
 apt-get update
 apt-get -y install python ffmpeg
-pip install youtube-dl
+pip install yt-dlp
 mkdir -p $YOUTUBEDL_OUTPUT_FOLDER
 mkdir -p $YOUTUBEDL_CONFIG_FOLDER
 mkdir -p $TERMUXURLOPENER_CONFIG_FOLDER
 # Download setup & config file
-curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v1.0.1/.ytdl.conf > "${YOUTUBEDL_CONFIG_FOLDER}/config"
-curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v1.0.1/share2youtubedl.sh > "${TERMUXURLOPENER_CONFIG_FOLDER}/termux-url-opener"
+curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v1.0.2/.ytdl.conf > "${YOUTUBEDL_CONFIG_FOLDER}/config"
+curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v1.0.2/share2youtubedl.sh > "${TERMUXURLOPENER_CONFIG_FOLDER}/termux-url-opener"
 
 echo -e "${BLUE}Congratulations!!! Your setup is complete.\n\n"
 read -p "When you are ready just press enter"
