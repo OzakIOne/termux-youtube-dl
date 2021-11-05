@@ -20,7 +20,7 @@ termux-setup-storage
 sleep 2
 apt-get update
 apt-get -y install python ffmpeg
-pip install yt-dlp
+pip install --no-deps -U yt-dlp
 mkdir -p $YOUTUBEDL_OUTPUT_FOLDER
 mkdir -p $YOUTUBEDL_CONFIG_FOLDER
 mkdir -p $TERMUXURLOPENER_CONFIG_FOLDER
