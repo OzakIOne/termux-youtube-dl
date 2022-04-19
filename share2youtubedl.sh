@@ -4,7 +4,7 @@ clear
 if [[ "$1" =~ ^.*youtu.*$ ]] || [[ "$1" =~ ^.*youtube.*$ ]]; then
     echo -e "Downloading video...\\n>URL: ${1}\\n"
     yt-dlp -F "$1"
-    read -p "Choose your video quality (press enter for: 'best') : " video
+    read -p "Choose your video quality (press enter for: 'best' or 'c' for 4chan limit (4MB),\x0a or enter 'd' for discord limit (8MB) or video format literal value above: " video
     read -p "Choose your audio quality (press enter for: 'best') : " audio
     if [[ "$video" = "" ]]; then
         video="best"
