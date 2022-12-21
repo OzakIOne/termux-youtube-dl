@@ -4,6 +4,7 @@ clear
 DOWNLOAD_PATH="~/storage/shared/Download/"
 PLAYLIST="%(extractor)s/playlists/%(playlist_title)s_%(playlist_id)s/%(n_entries-playlist_index)03d - %(uploader)s - %(title)s [%(id)s].%(ext)s"
 CHANNEL="%(extractor)s/channel/%(uploader)s_%(channel_id)s/%(title)s [%(id)s].%(ext)s"
+CONFIG_PATH="${HOME}/.config/yt-dlp/"
 
 function echo_bold() { echo -ne "\033[0;1;34m${*}${NC}\n"; }
 function echo_success() { echo -ne "\033[1;32m${*}${NC}\n"; }
@@ -28,7 +29,7 @@ function isSponsorblockAlive() {
 
 function downloadVideo() {
     echo -e "\\nDownloading video...\\n"
-    yt-dlp --config-location ./.ytdl.conf -F "$1"
+    yt-dlp --config-locations "${CONFIG_PATH}config" -F "$1"
     echo_warning "Choose your video quality (<enter> for: 'best'):"
     read -p "" video
     echo_warning "Choose your audio quality (<enter> for: 'best'):"
@@ -47,10 +48,10 @@ function downloadVideo() {
     fi
     if isSponsorblockAlive; then
         # sucess
-        yt-dlp --config-location ./.sponsorblock.conf -o "$name" -f "$video"+"$audio" "$1"
+        yt-dlp --config-locations "${CONFIG_PATH}sponsorblock.conf" -o "$name" -f "$video"+"$audio" "$1"
     else
         # fail
-        yt-dlp --config-location ./.ytdl.conf -o "$name" -f "$video"+"$audio" "$1"
+        yt-dlp --config-locations "${CONFIG_PATH}config" -o "$name" -f "$video"+"$audio" "$1"
     fi
 }
 
@@ -58,10 +59,10 @@ function downloadChannel() {
     echo "Downloading channel..."
     if isSponsorblockAlive; then
         # sucess
-        yt-dlp --config-location ./.sponsorblock.conf -o "$CHANNEL" "$1"
+        yt-dlp --config-locations "${CONFIG_PATH}sponsorblock.conf" -o "$CHANNEL" "$1"
     else
         # fail
-        yt-dlp --config-location ./.ytdl.conf -o "$CHANNEL" "$1"
+        yt-dlp --config-locations "${CONFIG_PATH}config" -o "$CHANNEL" "$1"
     fi
 }
 
@@ -69,10 +70,10 @@ function downloadPlaylist() {
     echo "Downloading playlist..."
     if isSponsorblockAlive; then
         # sucess
-        yt-dlp --config-location ./.sponsorblock.conf -P $DOWNLOAD_PATH -o "$PLAYLIST" "$1"
+        yt-dlp --config-locations "${CONFIG_PATH}sponsorblock.conf" -P $DOWNLOAD_PATH -o "$PLAYLIST" "$1"
     else
         # fail
-        yt-dlp --config-location ./.ytdl.conf -P $DOWNLOAD_PATH -o "$PLAYLIST" "$1"
+        yt-dlp --config-locations "${CONFIG_PATH}config" -P $DOWNLOAD_PATH -o "$PLAYLIST" "$1"
     fi
 
 }
@@ -109,7 +110,7 @@ elif [[ "$1" =~ ^.*nourlselected.*$ ]]; then
 
 # If shared element is NOT a youtube link
 else
-    yt-dlp --config-location ./.ytdl.conf -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' "$1"
+    yt-dlp --config-locations "${CONFIG_PATH}config" -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' "$1"
 fi
 
 read -p "Press enter to continue"
