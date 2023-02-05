@@ -24,9 +24,9 @@ mkdir -p $YOUTUBEDL_OUTPUT_FOLDER
 mkdir -p $YOUTUBEDL_CONFIG_FOLDER
 mkdir -p $TERMUXURLOPENER_CONFIG_FOLDER
 # Download setup & config file
-curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v2.0.0/.ytdl.conf >"${YOUTUBEDL_CONFIG_FOLDER}/config"
-curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v2.0.0/sponsorblock.conf >"${YOUTUBEDL_CONFIG_FOLDER}/sponsorblock.conf"
-curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v2.0.0/share2youtubedl.sh >"${TERMUXURLOPENER_CONFIG_FOLDER}/termux-url-opener"
+curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v2.0.1/.ytdl.conf >"${YOUTUBEDL_CONFIG_FOLDER}/config"
+curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v2.0.1/sponsorblock.conf >"${YOUTUBEDL_CONFIG_FOLDER}/sponsorblock.conf"
+curl -L https://raw.githubusercontent.com/OzakIOne/termux-youtube-dl/v2.0.1/share2youtubedl.sh >"${TERMUXURLOPENER_CONFIG_FOLDER}/termux-url-opener"
 
 echo -e "${BLUE}Congratulations!!! Your setup is complete.\n\n"
 read -p "When you are ready just press enter"
