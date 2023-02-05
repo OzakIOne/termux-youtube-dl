@@ -58,10 +58,8 @@ function downloadVideo() {
 function downloadChannel() {
     echo "Downloading channel..."
     if isSponsorblockAlive; then
-        # sucess
         yt-dlp --config-locations "${CONFIG_PATH}sponsorblock.conf" -o "$CHANNEL" "$1"
     else
-        # fail
         yt-dlp --config-locations "${CONFIG_PATH}config" -o "$CHANNEL" "$1"
     fi
 }
@@ -69,13 +67,20 @@ function downloadChannel() {
 function downloadPlaylist() {
     echo "Downloading playlist..."
     if isSponsorblockAlive; then
-        # sucess
         yt-dlp --config-locations "${CONFIG_PATH}sponsorblock.conf" -P $DOWNLOAD_PATH -o "$PLAYLIST" "$1"
     else
-        # fail
         yt-dlp --config-locations "${CONFIG_PATH}config" -P $DOWNLOAD_PATH -o "$PLAYLIST" "$1"
     fi
 
+}
+
+function downloadAudio() {
+    echo "Downloading audio..."
+    if isSponsorblockAlive; then
+        yt-dlp --config-locations "${CONFIG_PATH}sponsorblock.conf" -P $DOWNLOAD_PATH -x "$1"
+    else
+        yt-dlp --config-locations "${CONFIG_PATH}config" -P $DOWNLOAD_PATH -x "$1"
+    fi
 }
 
 # If shared element is a youtube link
@@ -85,6 +90,7 @@ if [[ "$1" =~ ^.*youtu.*$ ]] || [[ "$1" =~ ^.*youtube.*$ ]]; then
     echo_bold "1. Video mode (choose quality and name)"
     echo_bold "2. Playlist mode"
     echo_bold "3. Channel mode"
+    echo_bold "4. Audio only mode"
 
     echo_warning "Enter your choice:"
     read -p "" choice
@@ -98,6 +104,9 @@ if [[ "$1" =~ ^.*youtu.*$ ]] || [[ "$1" =~ ^.*youtube.*$ ]]; then
         ;;
     3)
         downloadChannel "$1"
+        ;;
+    4)
+        downloadAudio "$1"
         ;;
     *)
         echo_error "\\nInvalid choice!\\n"
