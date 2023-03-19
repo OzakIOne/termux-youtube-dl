@@ -18,7 +18,7 @@ read -p "When you are ready just press enter:"
 termux-setup-storage
 sleep 2
 apt-get update
-apt-get -y install python ffmpeg
+apt-get -y install python ffmpeg openssl
 pip install yt-dlp
 mkdir -p $YOUTUBEDL_OUTPUT_FOLDER
 mkdir -p $YOUTUBEDL_CONFIG_FOLDER
