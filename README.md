@@ -2,6 +2,8 @@
 
 Bash script to setup yt-dlp in termux
 
+Better use [Seal (yt-dl gui app)](https://github.com/JunkFood02/Seal)
+
 ## How to install
 
 1. Download [last fdroid version](https://f-droid.org/en/packages/com.termux/)
